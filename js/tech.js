@@ -67,21 +67,32 @@ const displayModal = details =>{
         <div>
             <h4>${details.description}</h4>
         </div>
-        <div class="d-flex justify-content-around">
-            <div class="bg-light">
-                <p class="text-success-emphasis">${details.pricing[0] ? (details.pricing[0].price, details.pricing[0].plan)  : "Free of cost/basic"}</p>
+        <div class="d-flex justify-content-between">
+            <div class="bg-light ms-2 p-2 rounded w-100">
+                <p class="text-success-emphasis">${details.pricing[0] ? details.pricing[0].price  : "Free of cost/basic"} ${details.pricing[0] ?   details.pricing[0].plan  : "Free of cost/basic"}</p>
                 
             </div>
-            <div class="bg-light">
-                <p class="text-primary-emphasis"></p>
+            <div class="bg-light ms-2 p-2 rounded w-100">
+                <p class="text-primary-emphasis">${details.pricing[1] ? details.pricing[1].price  : "Free of cost/basic"} ${details.pricing[1] ?   details.pricing[1].plan  : "Free of cost/basic"}</p>
             </div>
-            <div class="bg-light">
-                <p class="text-warning-emphasis"></p>
+            <div class="bg-light ms-2 me-2 p-2 rounded w-100">
+                <p class="text-warning-emphasis">${details.pricing[2] ? details.pricing[2].price  : "Free of cost/basic"} ${details.pricing[2] ?   details.pricing[2].plan  : "Free of cost/basic"}</p>
             </div>
         </div>
         <div class="d-flex justify-content-between">
-            <div></div>
-            <div></div>
+            <div>
+            <h4>Features</h4>
+            <ul>
+            <li>${details.features['1'].feature_name}</li>
+            <li>${details.features['2'].feature_name}</li>
+            <li>${details.features['3'].feature_name}</li>
+            <li>${details.features['4'].feature_name ? details.features['4'].feature_name : "no"}</li>
+            </ul>
+            </div>
+            <div>
+            <h4>Integrations</h4>
+            
+            </div>
         </div>
     </div>
     <!-- second div -->
