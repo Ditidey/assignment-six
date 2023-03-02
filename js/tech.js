@@ -16,7 +16,7 @@ const showAiUniverse = (tools, dataLimit) => {
         tools = tools.slice(0, 6);
     }
     tools.forEach(tool => {
-        console.log(tool);
+        // console.log(tool);
         const divCard = document.createElement('div');
         divCard.classList.add('col')
         divCard.innerHTML = `
@@ -30,13 +30,13 @@ const showAiUniverse = (tools, dataLimit) => {
                    <hr>
                  
               </div>
-              <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-between ps-2">
                  <div>
                  <h5 class="card-title">${tool.name}</h5>
                  <p><i class="fa-solid fa-calendar-days"></i> ${tool.published_in}</p>
                  </div>
                 <div>
-                <button  onclick = "FetchModal('${tool.id}')"><i class="fa-solid fa-arrow-right"></i></i></button>
+                <button data-bs-toggle="modal" data-bs-target="#modalId" onclick = "fetchModal('${tool.id}')"><i class="fa-solid fa-arrow-right"></i></i></button>
                 </div>
               </div>
                
@@ -47,6 +47,49 @@ const showAiUniverse = (tools, dataLimit) => {
           spinnerLoading(false);
     })
      
+}
+
+// showing modal 
+const fetchModal = async(id) =>{
+      const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      displayModal(data.data);
+}
+const displayModal = details =>{
+    console.log(details);
+    document.getElementById('modal-title').innerText = details.tool_name;
+    const modalBody = document.getElementById('body-modal');
+    modalBody.innerHTML = `
+    <div class="d-flex justify-content-between">
+    <!-- first div -->
+    <div class="bg-danger-subtle bg-opacity-50 p-2">
+        <div>
+            <h4>${details.description}</h4>
+        </div>
+        <div class="d-flex justify-content-around">
+            <div class="bg-light">
+                <p class="text-success-emphasis">${details.pricing[0] ? (details.pricing[0].price, details.pricing[0].plan)  : "Free of cost/basic"}</p>
+                
+            </div>
+            <div class="bg-light">
+                <p class="text-primary-emphasis"></p>
+            </div>
+            <div class="bg-light">
+                <p class="text-warning-emphasis"></p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- second div -->
+    <div>
+
+    </div>
+    `;
+   
 }
 
 // to show all info by button click
