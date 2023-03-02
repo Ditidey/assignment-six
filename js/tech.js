@@ -1,13 +1,20 @@
 // taking all information from api
-const fetchAiAll = () => {
+const fetchAiAll = (dataLimit) => {
     const url = `https://openapi.programming-hero.com/api/ai/tools`;
     fetch(url)
         .then(res => res.json())
-        .then(data => showAiUniverse(data.data.tools));
+        .then(data => showAiUniverse(data.data.tools, dataLimit));
 }
-const showAiUniverse = tools => {
+const showAiUniverse = (tools, dataLimit) => {
     // console.log(tools);
+     
     const divContainer = document.getElementById('container-div');
+    divContainer.innerHTML = "";
+
+    // showing 6 cards
+    if(dataLimit){
+        tools = tools.slice(0, 6);
+    }
     tools.forEach(tool => {
         console.log(tool);
         const divCard = document.createElement('div');
@@ -29,7 +36,7 @@ const showAiUniverse = tools => {
                  <p><i class="fa-solid fa-calendar-days"></i> ${tool.published_in}</p>
                  </div>
                 <div>
-                <button  ><i class="fa-solid fa-arrow-right"></i></i></button>
+                <button  onclick = "FetchModal('${tool.id}')"><i class="fa-solid fa-arrow-right"></i></i></button>
                 </div>
               </div>
                
@@ -39,6 +46,11 @@ const showAiUniverse = tools => {
     })
 }
 
+// to show all info by button click
+const showAllButton = () =>
+{
+    fetchAiAll();
+}
 // const showList = feature =>
 // {
 //   for(const feat of feature)

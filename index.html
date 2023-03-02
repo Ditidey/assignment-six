@@ -7,15 +7,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/58095d754f.js" crossorigin="anonymous"></script>
   </head>
-  <body class="container" onload="fetchAiAll()">
+  <body class="container" onload="fetchAiAll(6)">
       <header class="text-center mt-3 mb-5">
             <h1>AI Universe Hub</h1>
             <button type="button" class="btn btn-danger">Sort by Date</button>
       </header>
       <main>
+        <!-- making card to show ai universe -->
         <div id="container-div" class="row row-cols-1 row-cols-md-3 g-4">
 
         </div>
+
+        <!-- making button to show all -->
+        <div class="text-center my-4">
+            <button onclick="showAllButton()" type="button" class="btn btn-danger">Show All</button>
+        </div>
+
+        <!-- showing spinner -->
+        <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
       </main>
 
       <!-- script -->
