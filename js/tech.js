@@ -61,22 +61,22 @@ const displayModal = details =>{
     document.getElementById('modal-title').innerText = details.tool_name;
     const modalBody = document.getElementById('body-modal');
     modalBody.innerHTML = `
-    <div class="d-flex justify-content-between">
+    <div class=" row row-cols-lg-2 g-2">
     <!-- first div -->
-    <div class="bg-danger-subtle bg-opacity-50 p-2">
+    <div class="col bg-danger-subtle bg-opacity-50 p-2 w-50%">
         <div>
             <h4>${details.description}</h4>
         </div>
-        <div class="d-flex justify-content-between">
-            <div class="bg-light ms-2 p-2 rounded w-100">
-                <p class="text-success-emphasis">${details.pricing[0] ? details.pricing[0].price  : "Free of cost/basic"} ${details.pricing[0] ?   details.pricing[0].plan  : "Free of cost/basic"}</p>
+        <div class="d-flex justify-content-between pe-2">
+            <div class="bg-light ms-2 p-2 rounded w-50">
+                <p class="text-success-emphasis">${details.pricing[0] === '0' ? 'Free of cost/' : details.pricing[0].price} ${details.pricing[0] != '0' ?   details.pricing[0].plan  : "Basic"}</p>
                 
             </div>
-            <div class="bg-light ms-2 p-2 rounded w-100">
-                <p class="text-primary-emphasis">${details.pricing[1] ? details.pricing[1].price  : "Free of cost/basic"} ${details.pricing[1] ?   details.pricing[1].plan  : "Free of cost/basic"}</p>
+            <div class="bg-light ms-2 p-2 rounded w-50">
+                <p class="text-primary-emphasis">${details.pricing[1] > '0' ? details.pricing[1].price  : "Free of cost/Pro"} ${details.pricing[1]  ?   details.pricing[1].plan  : " "}</p>
             </div>
-            <div class="bg-light ms-2 me-2 p-2 rounded w-100">
-                <p class="text-warning-emphasis">${details.pricing[2] ? details.pricing[2].price  : "Free of cost/basic"} ${details.pricing[2] ?   details.pricing[2].plan  : "Free of cost/basic"}</p>
+            <div class="bg-light ms-2 me-2 p-2 rounded w-50">
+                <p class="text-warning-emphasis">${details.pricing[2] > '0' ? details.pricing[2].price  : "Free of cost/basic"} ${details.pricing[2]  ?   details.pricing[2].plan  : " "}</p>
             </div>
         </div>
         <div class="d-flex justify-content-between">
@@ -86,18 +86,33 @@ const displayModal = details =>{
             <li>${details.features['1'].feature_name}</li>
             <li>${details.features['2'].feature_name}</li>
             <li>${details.features['3'].feature_name}</li>
-            <li>${details.features['4'].feature_name ? details.features['4'].feature_name : "no"}</li>
+            <li>${details.features['4'] ? details.features['4'].feature_name : ''}</li>
+           
             </ul>
             </div>
             <div>
             <h4>Integrations</h4>
-            
+                
+                    <ul>
+                    <li>${details.integrations[0]}</li>
+                    <li>${details.integrations[1]}</li>
+                    <li>${details.integrations[2]}</li>
+                    <li>${details.integrations[3]}</li>
+                    </ul>
+                 
             </div>
         </div>
     </div>
-    <!-- second div -->
-    <div>
 
+    <!-- second div -->
+    <div class=" col w-50%">
+       <div class="pt-3">
+       <img src="${details.image_link[0]}" alt="" height = 120, width-400>
+       </div>
+       <div class="text-center">
+          <h4>${details.input_output_examples[0].input}</h4>
+          <h6>${details.input_output_examples[0].output}</h6>
+       </div>
     </div>
     `;
    
