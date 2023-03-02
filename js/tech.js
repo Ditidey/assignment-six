@@ -43,13 +43,29 @@ const showAiUniverse = (tools, dataLimit) => {
           </div>
           `;
           divContainer.appendChild(divCard)
+
+          spinnerLoading(false);
     })
+     
 }
 
 // to show all info by button click
 const showAllButton = () =>
 {
     fetchAiAll();
+    spinnerLoading(true);
+}
+// showing spinner
+const spinnerLoading = isLoading => {
+    const loader = document.getElementById('spinner-div');
+    if(isLoading)
+    {
+       loader.classList.remove('d-none');
+    }
+    else
+    {
+        loader.classList.add('d-none')
+    }
 }
 // const showList = feature =>
 // {
