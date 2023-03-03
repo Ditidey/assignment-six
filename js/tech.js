@@ -87,23 +87,24 @@ const displayModal = details =>{
     //  }
     //  let len = details.integrations.length();
     //  console.log(len);
+    // && details.pricing[0].price !== '0' && details.pricing[0].price !== "No cost"
     const modalBody = document.getElementById('body-modal');
     modalBody.innerHTML = `
-    
+     
     <!-- first div -->
-<div class="bg-danger-subtle bg-opacity-50 p-2 mb-4" style="width-50%">
+<div class="bg-danger-subtle bg-opacity-50 p-2 mb-4" style="width-200">
     <div>
         <h4>${details.description}</h4>
     </div>
     <div class="d-flex justify-content-between pe-2">
         <div class=" bg-light ms-2 p-2 rounded ">
-            <p class="text-success-emphasis">${details.pricing[0].price !== '0' && details.pricing[0].price !== "No cost"? details.pricing[0].price : "Free of cost/"}, ${details.pricing[0].plan }</p>  
+            <p class="text-success-emphasis">${details.pricing !== null ? details.pricing[0].price : "Free of cost/"}, ${details.pricing !== null ? details.pricing[0].plan : 'Basic'}</p>  
         </div>
         <div class=" bg-light ms-2 p-2 rounded ">
-            <p class="text-primary-emphasis">${details.pricing[1] !== '0' && details.pricing[1].price !== "No cost"? details.pricing[1].price  : "Free of cost/"}, ${details.pricing[1].plan }</p>
+            <p class="text-primary-emphasis">${details.pricing !== null ? details.pricing[1].price  : "Free of cost/"}, ${details.pricing !== null ? details.pricing[1].plan : 'Pro' }</p>
         </div>
         <div class=" bg-light ms-2 me-2 p-2 rounded ">
-            <p class="text-warning-emphasis">${details.pricing[2] !== '0' && details.pricing[2].price !== "No cost"? details.pricing[2].price  : "Free of cost/"}, ${details.pricing[2].plan } </p>
+            <p class="text-warning-emphasis">${details.pricing !== null ? details.pricing[2].price  : "Free of cost/"}, ${details.pricing !== null ? details.pricing[2].plan : 'Enterprise'} </p>
         </div>
     </div>
     <div class="d-flex justify-content-between pe-2 mt-3">
@@ -118,10 +119,11 @@ const displayModal = details =>{
         <div class=" bg-danger-subtle bg-opacity-75 p-2 rounded w-50">
               <h4>Integrations</h4>
                 <ul>
-                <li>${details.integrations[0] ? details.integrations[0] : ''}</li>
-                <li>${details.integrations[1] ? details.integrations[1] : ''}</li>
-                <li>${details.integrations[2] ? details.integrations[2] : ''}</li>
-                <li>${details.integrations[3] ? details.integrations[3] : ''}</li>
+                <li>${details.integrations !== null ? details.integrations[0] : ''}</li>
+                <li>${details.integrations !== null ? details.integrations[1] : ''}</li>
+                <li>${details.integrations !== null ? details.integrations[2] : ''}</li>
+                <li>${details.integrations !== null ? details.integrations[2] : ''}</li>
+                 
                 </ul>
                 
         </div>
@@ -129,17 +131,17 @@ const displayModal = details =>{
 </div>
 </div>
     <!-- second div -->
-<div class="ms-4" style="width-50%">
+<div class="ms-4" style="width-200">
     <div class="pt-3 text-center">
-       <img src="${details.image_link[0]}" alt="" height=200, width=200>
+       <img src="${details.image_link[0]}" alt="" height=200, width=200 class="img-fluid">
     </div>
     <div class="text-center">
-          <h4>${details.input_output_examples[0].input}</h4>
-          <h6>${details.input_output_examples[0].output}</h6>
+          <h4>${details.input_output_examples !== null ? details.input_output_examples[0].input : 'Hi, How can I help you?'}</h4>
+          <h6>${details.input_output_examples !== null ? details.input_output_examples[0].output : 'No, No, Take a break, it is the 12 card!'}</h6>
+         
     </div>
 </div>
-    `;
-   
+    `;  
 }
 // show integrations
  
