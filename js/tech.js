@@ -1,6 +1,6 @@
 // taking all information from api
 let dates = [];
-console.log(dates);
+// console.log(dates);
 
 const fetchAiAll = (dataLimit) => {
     const url = `https://openapi.programming-hero.com/api/ai/tools`;
@@ -68,68 +68,68 @@ const fetchModal = async(id) =>{
 const displayModal = details =>{
     console.log(details);
     document.getElementById('modal-title').innerText = details.tool_name;
-    document.getElementById('h-accuracy').innerText = details.accuracy.score * 100;
-     let len = details.integrations.length;
-     console.log(len);
+    if(details.accuracy.score * 100 > 0)
+     {
+        document.getElementById('h-accuracy').innerText = details.accuracy.score * 100;
+        document.getElementById('div-accu').classList.remove('d-none')
+     }
+     else
+     {
+        document.getElementById('div-accu').classList.add('d-none')
+     }
+    //  let len = details.integrations.length();
+    //  console.log(len);
     const modalBody = document.getElementById('body-modal');
     modalBody.innerHTML = `
-    <div class="row g-2">
+    
     <!-- first div -->
-    <div class="col-6 bg-danger-subtle bg-opacity-50 p-2">
-        <div>
-            <h4>${details.description}</h4>
+<div class="col-6 bg-danger-subtle bg-opacity-50 p-2 mb-4" style="width-50%">
+    <div>
+        <h4>${details.description}</h4>
+    </div>
+    <div class="d-flex justify-content-between pe-2">
+        <div class=" bg-light ms-2 p-2 rounded ">
+            <p class="text-success-emphasis">${details.pricing[0].price !== '0' && details.pricing[0].price !== "No cost"? details.pricing[0].price : "Free of cost/"}, ${details.pricing[0].plan }</p>  
         </div>
-        <div class="d-flex justify-content-between pe-2">
-            <div class="bg-light ms-2 p-2 rounded w-50">
-                <p class="text-success-emphasis">${details.pricing[0] !== '0' ? details.pricing[0].price : "Free of cost/"}</p>
-                <p class="text-success-emphasis"${details.pricing[0] !== '0' ?   details.pricing[0].plan  : "Basic"}</p>
-                
-            </div>
-            <div class="bg-light ms-2 p-2 rounded w-50">
-                <p class="text-primary-emphasis">${details.pricing[1] !== '0' ? details.pricing[1].price  : "Free of cost"}</p>
-                <p class="text-primary-emphasis">${details.pricing[1]  !== '0' ? details.pricing[1].plan  : "/Pro"} </p>
-            </div>
-            <div class="bg-light ms-2 me-2 p-2 rounded w-50">
-                <p class="text-warning-emphasis">${details.pricing[2] !== '0' ? details.pricing[2].price  : "Free of cost"} </p>
-                <p class="text-warning-emphasis">${details.pricing[2] !== '0' ?   details.pricing[2].plan  : "/Eenterprice"}</p>
-            </div>
+        <div class=" bg-light ms-2 p-2 rounded ">
+            <p class="text-primary-emphasis">${details.pricing[1] !== '0' && details.pricing[1].price !== "No cost"? details.pricing[1].price  : "Free of cost/"}, ${details.pricing[1].plan }</p>
         </div>
-        <div class="d-flex justify-content-between">
-            <div>
-            <h4>Features</h4>
-            <ul>
+        <div class=" bg-light ms-2 me-2 p-2 rounded ">
+            <p class="text-warning-emphasis">${details.pricing[2] !== '0' && details.pricing[2].price !== "No cost"? details.pricing[2].price  : "Free of cost/"}, ${details.pricing[2].plan } </p>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between pe-2 mt-3">
+        <div class=" bg-danger-subtle bg-opacity-75 ms-2 p-2 rounded w-50">
+           <h4>Features</h4>
+          <ul>
             <li>${details.features['1'].feature_name}</li>
             <li>${details.features['2'].feature_name}</li>
             <li>${details.features['3'].feature_name}</li>
             <li>${details.features['4'] ? details.features['4'].feature_name : ''}</li>
-            </ul>
-        
-            <div>
-            <h4>Integrations</h4>
-                
-                    <ul>
-                    <li>${details.integrations[0]}</li>
-                    <li>${details.integrations[1]}</li>
-                    <li>${details.integrations[2]}</li>
-                    <li>${details.integrations[3]}</li>
-                    </ul>
-                     
-                  
-                  
-            </div>
+          </ul>
+        </div>
+        <div class=" bg-danger-subtle bg-opacity-75 p-2 rounded w-50">
+              <h4>Integrations</h4>
+                <ul>
+                <li>${details.integrations[0]}</li>
+                <li>${details.integrations[1]}</li>
+                <li>${details.integrations[2]}</li>
+                <li>${details.integrations[3]}</li>
+                </ul>  
         </div>
     </div>
-   
+</div>
+   </div>
     <!-- second div -->
-    <div class="col-6">
-       <div class="pt-3">
-       <img src="${details.image_link[0]}" alt="" height = 120, width-400>
-       </div>
-       <div class="text-center">
+<div class="col-6  bg-success " style="width-50%">
+    <div class="pt-3">
+       <img src="${details.image_link[0]}" alt="" height=40, width=40>
+    </div>
+    <div class="text-center">
           <h4>${details.input_output_examples[0].input}</h4>
           <h6>${details.input_output_examples[0].output}</h6>
     </div>
-    </div>
+</div>
     `;
    
 }
@@ -162,7 +162,7 @@ const sortingDate = () =>
          })
 
          dates.forEach((d) => {
-            console.log(d);
+            // console.log(d);
          })
     const divContainer = document.getElementById('container-div');
     divContainer.innerHTML = "";
@@ -199,12 +199,4 @@ const sortingDate = () =>
           spinnerLoading(false);
     })
 }
-// const showList = feature =>
-// {
-//   for(const feat of feature)
-//   {
-//     <ul>
-//         <ol>feat</ol>
-//     </ul>
-//   }
-// }
+ 

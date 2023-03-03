@@ -33,22 +33,20 @@
         </div>
 
         <!-- making modal to show each details -->  
-        <div class="modal fade" id="modalId" tabindex="-1" aria-labelledby="modalIdLabel" aria-hidden="true">
+        <div class="modal fade" id="modalId" tabindex="-1" aria-labelledby="modalIdLabel" aria-hidden="true" style="max-width: 100%;">
             <div class="modal-dialog">
-                <button type="button" class="btn-close btn-outline-danger" data-bs-dismiss="modal" aria-label="Close" style="position: relative; top: 16px; right: 32px;"></button>
+                <button type="button" class="btn-close btn-outline-danger border-2" data-bs-dismiss="modal" aria-label="Close" style="position: relative; top: 16px; right: 32px;"></button>
                 <div class="modal-content">
                     <div class="modal-header" style="position: relative;">
                         <h1 class="modal-title fs-5" id="modal-title" id="modalIdLabel">Modal title</h1>
                          
-                        <div class="ms-5 px-4 py-2 border rounded bg-danger mt-2" style="position: absolute; top: 5px; right: 10px;"> 
+                        <div id="div-accu" class="ms-5 px-4 py-2 border rounded bg-danger mt-2" style="position: absolute; top: 5px; right: 10px;"> 
                             <h3><span id="h-accuracy"></span>% accuracy</h3>
                         </div>
                          
                     </div>
-                    <div id="body-modal" class="modal-body container text-center">
-                        <ul id="ul-inte">
-
-                        </ul> 
+                    <div id="body-modal" class="modal-body row-cols-12"  >
+                       
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
