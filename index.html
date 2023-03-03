@@ -13,7 +13,7 @@
 <body class="container" onload="fetchAiAll(6)">
     <header class="text-center mt-3 mb-5">
         <h1>AI Universe Hub</h1>
-        <button type="button" class="btn btn-danger">Sort by Date</button>
+        <button type="button" class="btn btn-danger" id="btn-sort" onclick="sortingDate()">Sort by Date</button>
     </header>
     <main>
         <!-- making card to show ai universe -->
@@ -33,15 +33,22 @@
         </div>
 
         <!-- making modal to show each details -->  
-        <div class="modal fade w-full" id="modalId" tabindex="-1" aria-labelledby="modalIdLabel" aria-hidden="true">
+        <div class="modal fade" id="modalId" tabindex="-1" aria-labelledby="modalIdLabel" aria-hidden="true">
             <div class="modal-dialog">
+                <button type="button" class="btn-close btn-outline-danger" data-bs-dismiss="modal" aria-label="Close" style="position: relative; top: 16px; right: 32px;"></button>
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header" style="position: relative;">
                         <h1 class="modal-title fs-5" id="modal-title" id="modalIdLabel">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div id="body-modal" class="modal-body">
                          
+                        <div class="ms-5 px-4 py-2 border rounded bg-danger mt-2" style="position: absolute; top: 5px; right: 10px;"> 
+                            <h3><span id="h-accuracy"></span>% accuracy</h3>
+                        </div>
+                         
+                    </div>
+                    <div id="body-modal" class="modal-body container text-center">
+                        <ul id="ul-inte">
+
+                        </ul> 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
