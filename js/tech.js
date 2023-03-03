@@ -77,13 +77,21 @@ const displayModal = details =>{
      {
         document.getElementById('div-accu').classList.add('d-none')
      }
+    //  looping for integrations
+    //  let divList = document.getElementById('div-li')
+    //  for(let i = 0; i< details.integrations.length(); i++)
+    //  {
+    //     let li = document.createElement('li')
+    //       li.innerText = details.integrations[i];
+    //       divList.appendChild(li);
+    //  }
     //  let len = details.integrations.length();
     //  console.log(len);
     const modalBody = document.getElementById('body-modal');
     modalBody.innerHTML = `
     
     <!-- first div -->
-<div class="col-6 bg-danger-subtle bg-opacity-50 p-2 mb-4" style="width-50%">
+<div class="bg-danger-subtle bg-opacity-50 p-2 mb-4" style="width-50%">
     <div>
         <h4>${details.description}</h4>
     </div>
@@ -101,29 +109,29 @@ const displayModal = details =>{
     <div class="d-flex justify-content-between pe-2 mt-3">
         <div class=" bg-danger-subtle bg-opacity-75 ms-2 p-2 rounded w-50">
            <h4>Features</h4>
-          <ul>
-            <li>${details.features['1'].feature_name}</li>
-            <li>${details.features['2'].feature_name}</li>
-            <li>${details.features['3'].feature_name}</li>
-            <li>${details.features['4'] ? details.features['4'].feature_name : ''}</li>
-          </ul>
+            <li> ${details.features[1].feature_name} </li>
+            <li> ${details.features[2].feature_name} </li>
+            <li> ${details.features[3].feature_name} </li>
+            
+            
         </div>
         <div class=" bg-danger-subtle bg-opacity-75 p-2 rounded w-50">
               <h4>Integrations</h4>
                 <ul>
-                <li>${details.integrations[0]}</li>
-                <li>${details.integrations[1]}</li>
-                <li>${details.integrations[2]}</li>
-                <li>${details.integrations[3]}</li>
-                </ul>  
+                <li>${details.integrations[0] ? details.integrations[0] : ''}</li>
+                <li>${details.integrations[1] ? details.integrations[1] : ''}</li>
+                <li>${details.integrations[2] ? details.integrations[2] : ''}</li>
+                <li>${details.integrations[3] ? details.integrations[3] : ''}</li>
+                </ul>
+                
         </div>
     </div>
 </div>
-   </div>
+</div>
     <!-- second div -->
-<div class="col-6  bg-success " style="width-50%">
-    <div class="pt-3">
-       <img src="${details.image_link[0]}" alt="" height=40, width=40>
+<div class="ms-4" style="width-50%">
+    <div class="pt-3 text-center">
+       <img src="${details.image_link[0]}" alt="" height=200, width=200>
     </div>
     <div class="text-center">
           <h4>${details.input_output_examples[0].input}</h4>
@@ -133,11 +141,14 @@ const displayModal = details =>{
     `;
    
 }
-
+// show integrations
+ 
 // to show all info by button click
-const showAllButton = () =>
+const showAllButton = (isTrue) =>
 {
+ 
     fetchAiAll();
+    
     spinnerLoading(true);
 }
 // showing spinner
@@ -166,6 +177,7 @@ const sortingDate = () =>
          })
     const divContainer = document.getElementById('container-div');
     divContainer.innerHTML = "";
+  
        dates.forEach(tool => {
         // dates.push(tool);
         // console.log(tool);
