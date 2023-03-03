@@ -77,20 +77,9 @@ const displayModal = details =>{
      {
         document.getElementById('div-accu').classList.add('d-none')
      }
-    //  looping for integrations
-    //  let divList = document.getElementById('div-li')
-    //  for(let i = 0; i< details.integrations.length(); i++)
-    //  {
-    //     let li = document.createElement('li')
-    //       li.innerText = details.integrations[i];
-    //       divList.appendChild(li);
-    //  }
-    //  let len = details.integrations.length();
-    //  console.log(len);
-    // && details.pricing[0].price !== '0' && details.pricing[0].price !== "No cost"
+
     const modalBody = document.getElementById('body-modal');
-    modalBody.innerHTML = `
-     
+    modalBody.innerHTML = `    
     <!-- first div -->
 <div class="bg-danger-subtle bg-opacity-50 p-2 mb-4" style="width-200">
     <div>
@@ -113,16 +102,17 @@ const displayModal = details =>{
             <li> ${details.features[1].feature_name} </li>
             <li> ${details.features[2].feature_name} </li>
             <li> ${details.features[3].feature_name} </li>
+            <li> ${details.features[4] ? details.features[4].feature_name : ''} </li>
             
             
         </div>
         <div class=" bg-danger-subtle bg-opacity-75 p-2 rounded w-50">
               <h4>Integrations</h4>
                 <ul>
-                <li>${details.integrations !== null ? details.integrations[0] : ''}</li>
-                <li>${details.integrations !== null ? details.integrations[1] : ''}</li>
-                <li>${details.integrations !== null ? details.integrations[2] : ''}</li>
-                <li>${details.integrations !== null ? details.integrations[2] : ''}</li>
+                <li>${details.integrations !== null ? details.integrations[0] : 'No data found '}</li>
+                <li>${details.integrations !== null ? details.integrations[1] : 'No data found'}</li>
+                <li>${details.integrations !== null ? details.integrations[2] : 'No data found'}</li>
+                <li>${details.integrations !== null ? details.integrations[3] : 'No data found'}</li>
                  
                 </ul>
                 
@@ -137,13 +127,13 @@ const displayModal = details =>{
     </div>
     <div class="text-center">
           <h4>${details.input_output_examples !== null ? details.input_output_examples[0].input : 'Hi, How can I help you?'}</h4>
-          <h6>${details.input_output_examples !== null ? details.input_output_examples[0].output : 'No, No, Take a break, it is the 12 card!'}</h6>
+          <h6>${details.input_output_examples !== null ? details.input_output_examples[0].output : 'No, No, Take a break, it is the 12 card! So dangerous'}</h6>
          
     </div>
 </div>
     `;  
 }
-// show integrations
+ 
  
 // to show all info by button click
 const showAllButton = (isTrue) =>
