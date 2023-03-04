@@ -66,7 +66,7 @@ const fetchModal = async(id) =>{
      
 }
 const displayModal = details =>{
-    console.log(details);
+    // console.log(details);
     document.getElementById('modal-title').innerText = details.tool_name;
     if(details.accuracy.score * 100 > 0)
      {
@@ -77,7 +77,11 @@ const displayModal = details =>{
      {
         document.getElementById('div-accu').classList.add('d-none')
      }
-
+     
+     
+    const {integrations, features} = details;
+    // console.log(integrations);
+  
     const modalBody = document.getElementById('body-modal');
     modalBody.innerHTML = `    
     <!-- first div -->
@@ -99,23 +103,14 @@ const displayModal = details =>{
     <div class="d-flex justify-content-between pe-2 mt-3">
         <div class=" bg-danger-subtle bg-opacity-75 ms-2 p-2 rounded w-50">
            <h4>Features</h4>
-            <li> ${details.features[1].feature_name} </li>
-            <li> ${details.features[2].feature_name} </li>
-            <li> ${details.features[3].feature_name} </li>
-            <li> ${details.features[4] ? details.features[4].feature_name : ''} </li>
-            
-            
+            <div id="fdiv">
+            </div>
         </div>
         <div class=" bg-danger-subtle bg-opacity-75 p-2 rounded w-50">
               <h4>Integrations</h4>
-                <ul>
-                <li>${details.integrations !== null ? details.integrations[0] : 'No data found '}</li>
-                <li>${details.integrations !== null ? details.integrations[1] : 'No data found'}</li>
-                <li>${details.integrations !== null ? details.integrations[2] : 'No data found'}</li>
-                <li>${details.integrations !== null ? details.integrations[3] : 'No data found'}</li>
-                 
-                </ul>
-                
+              
+                <div id="sList">
+                </div>
         </div>
     </div>
 </div>
@@ -131,9 +126,39 @@ const displayModal = details =>{
          
     </div>
 </div>
-    `;  
-}
+    `; 
+     const lidiv = document.getElementById('sList');
+     if(integrations === null)
+     {
+        // console.log('null div');
+        let liId = document.createElement('h6');
+        liId.innerText = 'Not found data';
+        lidiv.appendChild(liId);
+     }
+     else{
+        for(let i=0; i<integrations.length; i++) {
+            // console.log(integrations[i]);
+            let liId = document.createElement('li');
+            liId.innerText = integrations[i];
+            lidiv.appendChild(liId);
+        //   console.log("liId", liId);
+        }
+     }
+     
+    //  for features
+     const fdiv = document.getElementById('fdiv');
+     console.log(features.length)
+        for(let i in features) {
+            console.log(features[i]);
+            let liId = document.createElement('li');
+             liId.innerText = features[i].feature_name;
+          fdiv.appendChild(liId);
+          console.log("liId", liId);
+        }
  
+   
+}
+
  
 // to show all info by button click
 const showAllButton = (isTrue) =>
